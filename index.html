@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LG web app</title>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="shortcut icon" href="./assets/LG web.svg" type="image/x-icon">
+    <script type="importmap">
+      {
+        "imports": {
+          "@material/web/": "https://esm.run/@material/web/"
+        }
+      }
+    </script>
+    <script type="module">
+        import '@material/web/all.js';
+        import { styles as typescaleStyles } from '@material/web/typography/md-typescale-styles.js';
+
+        document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+    </script>
+    <script src="./js/script.js" type="module"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <md-tabs>
+                <md-primary-tab><md-icon slot="icon">home</md-icon>Home</md-primary-tab>
+                <md-primary-tab><md-icon slot="icon">mic</md-icon>Voice</md-primary-tab>
+                <md-primary-tab><md-icon slot="icon">map</md-icon>Maps</md-primary-tab>
+                <md-primary-tab><md-icon slot="icon">tune</md-icon>Tools</md-primary-tab>
+                <md-primary-tab><md-icon slot="icon">settings</md-icon>Settings</md-primary-tab>
+            </md-tabs>
+        </nav>
+    </header>
+    <main>
+        <!-- <interactive-map></interactive-map> -->
+        <!-- <lg-tools></lg-tools> -->
+        <home-page></home-page>
+    </main>
+</body>
+
+</html>
