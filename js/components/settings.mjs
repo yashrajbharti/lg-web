@@ -42,6 +42,7 @@ export class Settings extends HTMLElement {
             </clipPath>
             </defs>
         </svg>
+        <p class="message"></p>
         `;
 
     const style = document.createElement("style");
@@ -124,6 +125,18 @@ export class Settings extends HTMLElement {
                     translate: 0 100px;
                 }
             }
+            .message {
+                position: fixed;
+                inset-inline-end: 20px;
+                inset-block-end: 80px;
+                padding: 15px 25px;
+                border-radius: 10px;
+                box-shadow: var(--md-sys-color-shadow);
+                background-color: var(--md-sys-color-surface-container);
+            }
+            .message:empty{
+                display: none;
+            }
           `;
 
     this.shadowRoot.appendChild(style);
@@ -200,7 +213,13 @@ export class Settings extends HTMLElement {
       this.shadowRoot.getElementById("rigs").value = config.rigs || "";
     }
   }
-
+  showToast(message) {
+    const toast = this.shadowRoot.querySelector(".message");
+    toast.textContent = message;
+    setTimeout(() => {
+      toast.textContent = "";
+    }, 5000);
+  }
   startQrScanner() {
     const qrVideo = this.shadowRoot.querySelector("video");
     const scannerSVG = this.shadowRoot.querySelector(
@@ -221,13 +240,16 @@ export class Settings extends HTMLElement {
         qrVideo?.setAttribute("hidden", "");
         scannerSVG.style.display = "none";
         backArrowContainer.style.display = "none";
-        console.log(result.data);
-        const config = JSON.parse(result.data.trim());
-        if (config.username) {
-          localStorage.setItem("lgconfigs", JSON.stringify(config));
-          this.loadConfig();
-          connecttolg(config);
-          this.checkConnectionStatus();
+        try {
+          const config = JSON.parse(result.data.trim());
+          if (config.username) {
+            localStorage.setItem("lgconfigs", JSON.stringify(config));
+            this.loadConfig();
+            connecttolg(config);
+            this.checkConnectionStatus();
+          }
+        } catch {
+          this.showToast("Your QR code was not valid!");
         }
       },
       {
@@ -240,6 +262,7 @@ export class Settings extends HTMLElement {
       scannerSVG.style.display = "none";
       backArrowContainer.style.display = "none";
     });
+
     scanner
       .start()
       .then(() => {

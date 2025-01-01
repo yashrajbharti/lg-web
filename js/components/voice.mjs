@@ -1,0 +1,145 @@
+import { speech } from "../utils/speech.mjs";
+
+export class LGVoice extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+    const template = document.createElement("template");
+    template.innerHTML = `
+          <style>
+              .wrapper{
+                  position: relative;
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  align-items: center;
+                  block-size: 100dvh;
+                  padding-inline: 30px;
+              }
+              p {
+                  color: var(--md-sys-color-on-background);
+                  font-size: 1.2rem;
+              }
+              md-icon-button {
+                 scale: 5;
+                 margin-block: 80px;
+                 background-color: color-mix(in srgb, 95% transparent, 5% var(--md-sys-color-on-surface-variant));
+                 border-radius: 50%;
+                 cursor: pointer;
+              }
+  
+              .message {
+                 text-align: center;
+                 block-size: 120px;
+                 inline-size: 100%;
+                 overflow-y: scroll;
+                 word-break: break-word;
+                 scrollbar-width: none;
+                 color: var(--md-sys-color-tertiary-container);
+              }
+
+              .ripple::after {
+                 position: absolute;
+                 inset-inline-start: 50%;
+                 inset-block-start: 50%;
+                 translate: -50% -50%;
+                 content: "";
+                 background-color: color-mix(in srgb, 95% transparent, 5% var(--md-sys-color-on-surface-variant));
+                 border-radius: 50%;
+                 z-index: -1;
+                 animation: ripple 0.8s ease-in-out alternate infinite;
+              }
+            
+              @keyframes ripple {
+
+                0% {
+                 inline-size: 50px;
+                 block-size: 50px;
+                }
+
+                25% {
+                 inline-size: 45px;
+                 block-size: 45px;
+                }
+
+                50% {
+                 inline-size: 40px;
+                 block-size: 40px;
+                }
+
+                75% {
+                 inline-size: 55px;
+                 block-size: 55px;
+                }
+
+                100% {
+                 inline-size: 50px;
+                 block-size: 50px;
+                }
+
+              }
+            
+          </style>
+  
+          <div class="wrapper">
+               <md-icon-button id="micButton">
+                  <svg class="mic" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path fill="#4285f4"
+                          d="m12 15c1.66 0 3-1.31 3-2.97v-7.02c0-1.66-1.34-3.01-3-3.01s-3 1.34-3 3.01v7.02c0 1.66 1.34 2.97 3 2.97z"></path>
+                      <path fill="#34a853" d="m11 18.08h2v3.92h-2z"></path>
+                      <path fill="#fbbc04"
+                          d="m7.05 16.87c-1.27-1.33-2.05-2.83-2.05-4.87h2c0 1.45 0.56 2.42 1.47 3.38v0.32l-1.15 1.18z"></path>
+                      <path fill="#ea4335"
+                          d="m12 16.93a4.97 5.25 0 0 1 -3.54 -1.55l-1.41 1.49c1.26 1.34 3.02 2.13 4.95 2.13 3.87 0 6.99-2.92 6.99-7h-1.99c0 2.92-2.24 4.93-5 4.93z"></path>
+                  </svg>
+              </md-icon-button>
+              <p>Tap on Mic to Speak</p>
+              <p class="message"></p>
+          </div>
+          `;
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
+  }
+
+  connectedCallback() {
+    const micButton = this.shadowRoot.getElementById("micButton");
+    const messageEl = this.shadowRoot.querySelector(".message");
+
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      console.error("Web Speech API is not supported in this browser.");
+      messageEl.textContent =
+        "Your browser does not support voice recognition.";
+      return;
+    }
+
+    const recognition = new SpeechRecognition();
+    recognition.lang = "en-US";
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+
+    micButton.addEventListener("click", () => {
+      messageEl.textContent = "Start Speaking...";
+      recognition.start();
+      micButton.classList.add("ripple");
+    });
+
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript.trim();
+      speech(transcript);
+      messageEl.textContent = transcript;
+      micButton.classList?.remove("ripple");
+    };
+
+    recognition.onspeechend = () => {
+      recognition.stop();
+      micButton.classList?.remove("ripple");
+    };
+
+    recognition.onerror = (event) => {
+      console.error("Speech recognition error:", event.error);
+      messageEl.textContent = "You didn't say anything, try again.";
+      micButton.classList?.remove("ripple");
+    };
+  }
+}
