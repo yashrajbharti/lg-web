@@ -51,19 +51,19 @@ export class LGtools extends HTMLElement {
               font-size: 20px;
           }
           md-filled-tonal-button:nth-of-type(1) {
-              filter: hue-rotate(80deg)
+              filter: hue-rotate(80deg) contrast(1.2);
           }
           md-filled-tonal-button:nth-of-type(2) {
-              filter: hue-rotate(-40deg)
+              filter: hue-rotate(-40deg) contrast(1.2);
           }
           md-filled-tonal-button:nth-of-type(3) {
-              filter: hue-rotate(-60deg)
+              filter: hue-rotate(-60deg) contrast(1.2);
           }
           md-filled-tonal-button:nth-of-type(4) {
-              filter: hue-rotate(195deg)
+              filter: hue-rotate(195deg) contrast(1.2);
           }
           md-filled-tonal-button:nth-of-type(5) {
-              filter: hue-rotate(135deg)
+              filter: hue-rotate(135deg) contrast(1.2);
           }
         `;
 
