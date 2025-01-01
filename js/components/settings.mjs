@@ -24,9 +24,9 @@ export class Settings extends HTMLElement {
         </form>
         <video hidden></video>
         <div class="icon-button">
-            <md-icon-button>
+            <md-filled-tonal-icon-button>
                 <md-icon>arrow_back</md-icon>
-            </md-icon-button>
+            </md-filled-tonal-icon-button>
         </div>
         `;
 
@@ -115,7 +115,7 @@ export class Settings extends HTMLElement {
       if (newValue === "true") {
         this.checkConnectionStatus();
       } else {
-        this.shadowRoot.querySelector("md-icon-button").click();
+        this.shadowRoot.querySelector("md-filled-tonal-icon-button").click();
       }
     }
   }
@@ -170,7 +170,9 @@ export class Settings extends HTMLElement {
   startQrScanner() {
     const qrVideo = this.shadowRoot.querySelector("video");
     const backArrowContainer = this.shadowRoot.querySelector(".icon-button");
-    const backButton = this.shadowRoot.querySelector("md-icon-button");
+    const backButton = this.shadowRoot.querySelector(
+      "md-filled-tonal-icon-button"
+    );
     qrVideo?.removeAttribute("hidden");
 
     const scanner = new QrScanner(
