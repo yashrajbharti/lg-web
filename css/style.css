@@ -67,3 +67,23 @@ header {
     inset-block-end: 0;
     inline-size: 100%;
 }
+
+.wrapper {
+    display: flex;
+    max-inline-size: 1280px;
+    scroll-snap-type: x mandatory;
+    flex-flow: row nowrap;
+    overflow-y: hidden;
+    scrollbar-width: none;
+}
+
+.wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+section {
+    inline-size: 100%;
+    block-size: 100dvh;
+    scroll-snap-align: center;
+    flex: none;
+}

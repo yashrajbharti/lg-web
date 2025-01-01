@@ -40,7 +40,7 @@ export class LGtools extends HTMLElement {
           .button-wrapper {
               block-size: max-content;
               display: grid;
-              grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+              grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
               gap: 15px;
               justify-content: center;
               align-items: center;

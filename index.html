@@ -31,19 +31,22 @@
     <header>
         <nav>
             <md-tabs>
-                <md-primary-tab><md-icon slot="icon">home</md-icon>Home</md-primary-tab>
-                <md-primary-tab><md-icon slot="icon">mic</md-icon>Voice</md-primary-tab>
-                <md-primary-tab><md-icon slot="icon">map</md-icon>Maps</md-primary-tab>
-                <md-primary-tab><md-icon slot="icon">tune</md-icon>Tools</md-primary-tab>
-                <md-primary-tab><md-icon slot="icon">settings</md-icon>Settings</md-primary-tab>
+                <md-primary-tab data-tab="home"><md-icon slot="icon">home</md-icon>Home</md-primary-tab>
+                <md-primary-tab data-tab="voice"><md-icon slot="icon">mic</md-icon>Voice</md-primary-tab>
+                <md-primary-tab data-tab="maps"><md-icon slot="icon">map</md-icon>Maps</md-primary-tab>
+                <md-primary-tab data-tab="tools"><md-icon slot="icon">tune</md-icon>Tools</md-primary-tab>
+                <md-primary-tab data-tab="settings"><md-icon slot="icon">settings</md-icon>Settings</md-primary-tab>
             </md-tabs>
         </nav>
     </header>
     <main>
-        <!-- <home-page></home-page> -->
-        <!-- <interactive-map></interactive-map> -->
-        <!-- <lg-tools></lg-tools> -->
-        <lg-settings></lg-settings>
+        <div class="wrapper" dir="ltr">
+            <section id="home"><home-page></home-page></section>
+            <section id="voice">2</section>
+            <section id="maps"><interactive-map></interactive-map></section>
+            <section id="tools"><lg-tools></lg-tools></section>
+            <section id="settings"><lg-settings></lg-settings></section>
+        </div>
     </main>
 </body>
 
