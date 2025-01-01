@@ -22,7 +22,12 @@ export class Settings extends HTMLElement {
             <md-outlined-text-field id="rigs" label="Number of Rigs" value=""></md-outlined-text-field>
             <md-filled-button type="button">Connect to LG</md-filled-button>
         </form>
-        <video id="qr-video" hidden></video>
+        <video hidden></video>
+        <div class="icon-button">
+            <md-icon-button>
+                <md-icon>arrow_back</md-icon>
+            </md-icon-button>
+        </div>
         `;
 
     const style = document.createElement("style");
@@ -35,6 +40,7 @@ export class Settings extends HTMLElement {
             }
             .container {
                 padding: 20px;
+                margin-block-start: 15px;
             }
             form {
                 margin-block-start: 25px;
@@ -66,6 +72,24 @@ export class Settings extends HTMLElement {
                 inline-size: 100%;
                 margin-block: 10px;
             }
+            .icon-button {
+                position: fixed;
+                display: none;
+                inset-inline-start: 20px;
+                inset-block-start: 20px;
+                z-index: 2;
+            }
+            video {
+                inline-size: 100%;
+                block-size: 100dvh;
+                opacity: 1;
+                transform: scaleX(1);
+                position: fixed;
+                inset-block-start: 0;
+                inset-inline-start: 0;
+                z-index: 1;
+                background-color: var(--md-sys-color-background);
+            }
           `;
 
     this.shadowRoot.appendChild(style);
@@ -90,6 +114,8 @@ export class Settings extends HTMLElement {
     if (name === "active") {
       if (newValue === "true") {
         this.checkConnectionStatus();
+      } else {
+        this.shadowRoot.querySelector("md-icon-button").click();
       }
     }
   }
@@ -142,25 +168,43 @@ export class Settings extends HTMLElement {
   }
 
   startQrScanner() {
-    const qrVideo = this.shadowRoot.getElementById("qr-video");
+    const qrVideo = this.shadowRoot.querySelector("video");
+    const backArrowContainer = this.shadowRoot.querySelector(".icon-button");
+    const backButton = this.shadowRoot.querySelector("md-icon-button");
     qrVideo?.removeAttribute("hidden");
-    qrVideo.style.width = "100%";
-    qrVideo.style.height = "auto";
-    qrVideo.style.opacity = "1";
-    qrVideo.style.transform = "scaleX(1)";
+
     const scanner = new QrScanner(
       qrVideo,
       (result) => {
-        console.log("QR Code scanned:", result.data);
+        // { "username": "lg", "ip": "192.168.29.124", "port": "2222", "password": "lg", "rigs": "5" }
         scanner.stop();
-        qrVideo.setAttribute("hidden", "");
+        qrVideo?.setAttribute("hidden", "");
+        backArrowContainer.style.display = "none";
+        alert(result.data);
+        const config = JSON.parse(result.data.trim());
+        if (config.username) {
+          localStorage.setItem("lgconfigs", JSON.stringify(config));
+          this.loadConfig();
+          connecttolg(config);
+          this.checkConnectionStatus();
+        }
       },
       {
         onDecodeError: (error) => console.error("QR scanning error:", error),
       }
     );
-    scanner.start().catch((err) => {
-      console.error("Failed to start QR scanner:", err);
+    backButton.addEventListener("click", () => {
+      scanner.stop();
+      qrVideo?.setAttribute("hidden", "");
+      backArrowContainer.style.display = "none";
     });
+    scanner
+      .start()
+      .then(() => {
+        backArrowContainer.style.display = "block";
+      })
+      .catch((err) => {
+        console.error("Failed to start QR scanner:", err);
+      });
   }
 }

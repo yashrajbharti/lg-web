@@ -40,7 +40,9 @@ class e {
     a.muted = !0;
     let h = !1;
     a.hidden && ((a.hidden = !1), (h = !0));
-    document.body.contains(a) || (document.body.appendChild(a), (h = !0));
+    document.querySelector("lg-settings").shadowRoot.contains(a) ||
+      (document.querySelector("lg-settings").shadowRoot.appendChild(a),
+      (h = !0));
     c = a.parentElement;
     if (b.highlightScanRegion || b.highlightCodeOutline) {
       d = !!b.overlay;
