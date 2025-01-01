@@ -17,9 +17,9 @@ export class Settings extends HTMLElement {
         <form>
             <md-outlined-text-field id="username" label="Username" value=""></md-outlined-text-field>
             <md-outlined-text-field id="ip" label="IP Address" value=""></md-outlined-text-field>
-            <md-outlined-text-field id="port" label="Port Number" value=""></md-outlined-text-field>
+            <md-outlined-text-field id="port" label="Port Number" value="" type="number" no-spinner></md-outlined-text-field>
             <md-outlined-text-field id="password" label="Password" value=""></md-outlined-text-field>
-            <md-outlined-text-field id="rigs" label="Number of Rigs" value=""></md-outlined-text-field>
+            <md-outlined-text-field id="rigs" label="Number of Rigs" value="" type="number" no-spinner></md-outlined-text-field>
             <md-filled-button type="button">Connect to LG</md-filled-button>
         </form>
         <video hidden></video>
