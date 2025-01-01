@@ -32,7 +32,7 @@ export class LGtools extends HTMLElement {
     const style = document.createElement("style");
     style.textContent = `
           .container {
-              block-size: 100dvh;
+              block-size: calc(100dvh - 80px);
               margin: auto;
               display: grid;
               align-items: center;
