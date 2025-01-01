@@ -95,7 +95,8 @@ export class Settings extends HTMLElement {
             }
             video {
                 inline-size: 100%;
-                block-size: 100%;
+                block-size: 100dvh;
+                object-fit: cover;
                 opacity: 1;
                 transform: scaleX(1);
                 position: fixed;
