@@ -35,7 +35,7 @@ export const changeTabs = () => {
         scrollToPage("settings");
         break;
       default:
-        scrollToPage("home");
+        console.error("page doesn't exist");
     }
   });
 };
