@@ -16,7 +16,7 @@ export const pageObserver = () => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         const activeTabIndex = indexMap.get(entry.target.id);
-        tabs.activeTabIndex = activeTabIndex;
+        // tabs.activeTabIndex = activeTabIndex;
       }
     });
   }, options);
