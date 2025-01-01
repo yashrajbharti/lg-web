@@ -90,6 +90,9 @@ export class Settings extends HTMLElement {
                 z-index: 1;
                 background-color: var(--md-sys-color-background);
             }
+            .scan-region-highlight, .code-outline-highlight {
+                z-index: 2;
+            }
           `;
 
     this.shadowRoot.appendChild(style);
@@ -182,7 +185,7 @@ export class Settings extends HTMLElement {
         scanner.stop();
         qrVideo?.setAttribute("hidden", "");
         backArrowContainer.style.display = "none";
-        alert(result.data);
+        console.log(result.data);
         const config = JSON.parse(result.data.trim());
         if (config.username) {
           localStorage.setItem("lgconfigs", JSON.stringify(config));
