@@ -83,7 +83,6 @@ header {
 
 section {
     inline-size: 100%;
-    block-size: 100dvh;
     scroll-snap-align: center;
     flex: none;
 }
