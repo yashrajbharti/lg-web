@@ -15,12 +15,12 @@ export class Settings extends HTMLElement {
         <md-filled-tonal-button id="scan-qr"><md-icon slot="icon">qr_code_scanner</md-icon>Scan QR to Connect</md-filled-tonal-button>
         <p class="divider"><span>OR<span><p>
         <form>
-            <md-outlined-text-field id="username" label="Username" value=""></md-outlined-text-field>
-            <md-outlined-text-field id="ip" label="IP Address" value=""></md-outlined-text-field>
-            <md-outlined-text-field id="port" label="Port Number" value="" type="number" no-spinner></md-outlined-text-field>
-            <md-outlined-text-field id="password" label="Password" value=""></md-outlined-text-field>
+            <md-outlined-text-field id="username" required label="Username" value=""></md-outlined-text-field>
+            <md-outlined-text-field id="ip" required label="IP Address" value=""></md-outlined-text-field>
+            <md-outlined-text-field id="port" required label="Port Number" value="" type="number" no-spinner></md-outlined-text-field>
+            <md-outlined-text-field id="password" required label="Password" value=""></md-outlined-text-field>
             <md-outlined-text-field id="rigs" label="Number of Rigs" value="" type="number" no-spinner></md-outlined-text-field>
-            <md-filled-button type="button">Connect to LG</md-filled-button>
+            <md-filled-button type="submit">Connect to LG</md-filled-button>
         </form>
         <video hidden></video>
         <div class="icon-button">
@@ -144,9 +144,10 @@ export class Settings extends HTMLElement {
 
     this.loadConfig();
 
-    this.shadowRoot
-      .querySelector("md-filled-button")
-      .addEventListener("click", () => this.saveConfig());
+    this.shadowRoot.querySelector("form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      this.saveConfig();
+    });
 
     this.shadowRoot
       .getElementById("scan-qr")

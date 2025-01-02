@@ -1,5 +1,4 @@
 import { speech } from "../utils/speech.mjs";
-
 export class LGVoice extends HTMLElement {
   constructor() {
     super();
@@ -81,26 +80,6 @@ export class LGVoice extends HTMLElement {
                  block-size: 40px;
                }
               }
-
-             .googleVoice {
-                position: absolute;
-                inset-inline-start: 50%;
-                inset-block-end: 38px; 
-                translate: -50% 0;
-             }
-
-             .googleVoice rect{
-                transform-origin: center;
-                display: inline-block;
-                position: relative;
-             }
-            
-             .googleVoice rect {
-                 animation: voice 5s ease-in-out alternate infinite;
-             }
-            
-            @keyframes voice {
-               
             }
 
           </style>
@@ -119,67 +98,7 @@ export class LGVoice extends HTMLElement {
               </md-icon-button>
               <p>Tap on Mic to Speak</p>
               <p class="message"></p>
-
-              <svg class="googleVoice" width="410" height="79" viewBox="0 0 410 79" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g filter="url(#filter0_d_83_14)">
-                    <rect class="blue" x="35" y="47" width="85" height="5" fill="#4285F4"/>
-                    </g>
-                    <g filter="url(#filter1_d_83_14)">
-                    <rect class="red" x="120" y="47" width="85" height="5" fill="#EA4335"/>
-                    </g>
-                    <g filter="url(#filter2_d_83_14)">
-                    <rect class="yellow" x="205" y="47" width="85" height="5" fill="#FBBC05"/>
-                    </g>
-                    <g filter="url(#filter3_d_83_14)">
-                    <rect class="green" x="290" y="47" width="85" height="5" fill="#34A853"/>
-                    </g>
-                    <defs>
-                    <filter id="filter0_d_83_14" x="0.200001" y="4.2" width="154.6" height="74.6" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                    <feMorphology radius="2" operator="dilate" in="SourceAlpha" result="effect1_dropShadow_83_14"/>
-                    <feOffset dy="-8"/>
-                    <feGaussianBlur stdDeviation="16.4"/>
-                    <feComposite in2="hardAlpha" operator="out"/>
-                    <feColorMatrix type="matrix" values="0 0 0 0 0.258824 0 0 0 0 0.521569 0 0 0 0 0.956863 0 0 0 1 0"/>
-                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_83_14"/>
-                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_83_14" result="shape"/>
-                    </filter>
-                    <filter id="filter1_d_83_14" x="85.2" y="0.200001" width="154.6" height="74.6" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                    <feMorphology radius="2" operator="dilate" in="SourceAlpha" result="effect1_dropShadow_83_14"/>
-                    <feOffset dy="-12"/>
-                    <feGaussianBlur stdDeviation="16.4"/>
-                    <feComposite in2="hardAlpha" operator="out"/>
-                    <feColorMatrix type="matrix" values="0 0 0 0 0.917647 0 0 0 0 0.262745 0 0 0 0 0.207843 0 0 0 1 0"/>
-                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_83_14"/>
-                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_83_14" result="shape"/>
-                    </filter>
-                    <filter id="filter2_d_83_14" x="170.2" y="2.2" width="154.6" height="74.6" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                    <feMorphology radius="2" operator="dilate" in="SourceAlpha" result="effect1_dropShadow_83_14"/>
-                    <feOffset dy="-10"/>
-                    <feGaussianBlur stdDeviation="16.4"/>
-                    <feComposite in2="hardAlpha" operator="out"/>
-                    <feColorMatrix type="matrix" values="0 0 0 0 0.984314 0 0 0 0 0.737255 0 0 0 0 0.0196078 0 0 0 1 0"/>
-                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_83_14"/>
-                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_83_14" result="shape"/>
-                    </filter>
-                    <filter id="filter3_d_83_14" x="255.2" y="4.2" width="154.6" height="74.6" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                    <feMorphology radius="2" operator="dilate" in="SourceAlpha" result="effect1_dropShadow_83_14"/>
-                    <feOffset dy="-8"/>
-                    <feGaussianBlur stdDeviation="16.4"/>
-                    <feComposite in2="hardAlpha" operator="out"/>
-                    <feColorMatrix type="matrix" values="0 0 0 0 0.203922 0 0 0 0 0.658824 0 0 0 0 0.32549 0 0 0 1 0"/>
-                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_83_14"/>
-                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_83_14" result="shape"/>
-                    </filter>
-                    </defs>
-                </svg>
+              <slot name="voice"></slot>
           </div>
           `;
     this.shadowRoot.appendChild(template.content.cloneNode(true));
@@ -188,7 +107,7 @@ export class LGVoice extends HTMLElement {
   connectedCallback() {
     const micButton = this.shadowRoot.getElementById("micButton");
     const messageEl = this.shadowRoot.querySelector(".message");
-    const voiceAnimation = this.shadowRoot.querySelector(".googleVoice");
+    const voiceAnimation = document.querySelector(".googleVoice");
 
     const SpeechRecognition =
       window.SpeechRecognition || window.webkitSpeechRecognition;

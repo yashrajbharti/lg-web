@@ -23,7 +23,8 @@ export const speech = (words) => {
     case words.includes("send") && words.includes("KML"):
       sendkml();
       break;
-    case words.includes("shut") && words.includes("down"):
+    case (words.includes("shut") && words.includes("down")) ||
+      (words.includes("turn") && words.includes("off")):
       shutdown();
       break;
     case words.includes("orbit") || words.includes("spin"):
