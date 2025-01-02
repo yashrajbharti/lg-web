@@ -5,7 +5,7 @@ const urlsToCache = [
   "./css/style.css",
   "./js/script.js",
   "./assets/LG web app.svg",
-  "./assets/Cover.png",
+  "./assets/Liquid galaxy.svg",
   "https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined",
   "https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap",
   "https://esm.run/@material/web/",

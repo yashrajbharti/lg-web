@@ -206,18 +206,18 @@ export class LGVoice extends HTMLElement {
     recognition.maxAlternatives = 1;
 
     micButton.addEventListener("click", () => {
-      messageEl.textContent = "Start Speaking...";
-
       if (isRecognizing) {
+        messageEl.textContent = "";
         isRecognizing = false;
         recognition.stop();
         removeAnimations();
+      } else {
+        messageEl.textContent = "Start Speaking...";
+        recognition.start();
+        isRecognizing = true;
+        micButton.classList.add("ripple");
+        voiceAnimation.classList.add("animate");
       }
-
-      recognition.start();
-      isRecognizing = true;
-      micButton.classList.add("ripple");
-      voiceAnimation.classList.add("animate");
     });
 
     const removeAnimations = () => {
