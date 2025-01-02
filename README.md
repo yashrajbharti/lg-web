@@ -8,7 +8,7 @@ An immersive Google Earth web application for Liquid Galaxy, this project is the
 
 ### Home Page
 
-![Home](./assets/Home.png)
+<img src="./assets/Home.png" alt="Home Page Screenshot" width="200px" />
 
 - Displays a hero section.
 - Includes a "Send KML" button.
@@ -16,7 +16,7 @@ An immersive Google Earth web application for Liquid Galaxy, this project is the
 
 ### Voice Page
 
-![Voice](./assets/Voice.png)
+<img src="./assets/Voice.png" alt="Voice Page Screenshot" width="200px" />
 
 - Utilizes the Web Speech API for voice control.
 - Execute commands like:
@@ -26,7 +26,7 @@ An immersive Google Earth web application for Liquid Galaxy, this project is the
 
 ### Maps Page
 
-![Maps](./assets/Maps.png)
+<img src="./assets/Maps.png" alt="Maps Page Screenshot" width="200px" />
 
 - Built using Leaflet.
 - Control Google Earth with touch interactions on the map.
@@ -36,7 +36,7 @@ An immersive Google Earth web application for Liquid Galaxy, this project is the
 
 ### Tools Page
 
-![Tools](./assets/Tools.png)
+<img src="./assets/Tools.png" alt="Tools Page Screenshot" width="200px" />
 
 - Provides utility tools for Liquid Galaxy management, such as:
   - Relaunch
@@ -47,7 +47,7 @@ An immersive Google Earth web application for Liquid Galaxy, this project is the
 
 ### Settings Page
 
-![Settings](./assets/Settings.png)
+<img src="./assets/Settings.png" alt="Settings Page Screenshot" width="200px" />
 
 - SSH and connect to Liquid Galaxy (Google Earth cluster).
 - Connection Methods:

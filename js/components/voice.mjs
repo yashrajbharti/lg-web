@@ -200,13 +200,22 @@ export class LGVoice extends HTMLElement {
     }
 
     const recognition = new SpeechRecognition();
+    let isRecognizing = false;
     recognition.lang = "en-US";
     recognition.interimResults = false;
     recognition.maxAlternatives = 1;
 
     micButton.addEventListener("click", () => {
       messageEl.textContent = "Start Speaking...";
+
+      if (isRecognizing) {
+        isRecognizing = false;
+        recognition.stop();
+        removeAnimations();
+      }
+
       recognition.start();
+      isRecognizing = true;
       micButton.classList.add("ripple");
       voiceAnimation.classList.add("animate");
     });
@@ -225,18 +234,21 @@ export class LGVoice extends HTMLElement {
     recognition.onresult = (event) => {
       const transcript = event.results[0][0].transcript.trim();
       speech(transcript);
+      isRecognizing = false;
       messageEl.textContent = transcript;
       removeAnimations();
     };
 
     recognition.onspeechend = () => {
       recognition.stop();
+      isRecognizing = false;
       removeAnimations();
     };
 
     recognition.onerror = (event) => {
       console.error("Speech recognition error:", event.error);
       messageEl.textContent = "You didn't say anything, try again.";
+      isRecognizing = false;
       removeAnimations();
     };
   }
