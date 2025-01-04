@@ -85,7 +85,7 @@ export class LGVoice extends HTMLElement {
           </style>
   
           <div class="wrapper">
-               <md-icon-button id="micButton">
+               <md-icon-button id="micButton" aria-label="Microphone">
                   <svg class="mic" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path fill="#4285f4"
                           d="m12 15c1.66 0 3-1.31 3-2.97v-7.02c0-1.66-1.34-3.01-3-3.01s-3 1.34-3 3.01v7.02c0 1.66 1.34 2.97 3 2.97z"></path>
