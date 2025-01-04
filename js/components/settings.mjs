@@ -18,7 +18,12 @@ export class Settings extends HTMLElement {
             <md-outlined-text-field id="username" required label="Username" value=""></md-outlined-text-field>
             <md-outlined-text-field id="ip" required label="IP Address" value=""></md-outlined-text-field>
             <md-outlined-text-field id="port" required label="Port Number" value="" type="number" no-spinner></md-outlined-text-field>
-            <md-outlined-text-field id="password" required label="Password" value=""></md-outlined-text-field>
+            <md-outlined-text-field id="password" required label="Password" value="" type="password">
+            <md-icon-button toggle slot="trailing-icon" type="button">
+              <md-icon>visibility</md-icon>
+              <md-icon slot="selected">visibility_off</md-icon>
+            </md-icon-button>
+            </md-outlined-text-field>
             <md-outlined-text-field id="rigs" label="Number of Rigs" value="" type="number" no-spinner></md-outlined-text-field>
             <md-filled-button type="submit">Connect to LG</md-filled-button>
         </form>
@@ -148,6 +153,15 @@ export class Settings extends HTMLElement {
       e.preventDefault();
       this.saveConfig();
     });
+
+    this.shadowRoot
+      .querySelector("md-icon-button")
+      .addEventListener("click", () => {
+        const passwordField = this.shadowRoot.getElementById("password");
+        if (passwordField.getAttribute("type") === "text")
+          passwordField.setAttribute("type", "password");
+        else passwordField.setAttribute("type", "text");
+      });
 
     this.shadowRoot
       .getElementById("scan-qr")
