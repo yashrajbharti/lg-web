@@ -19,7 +19,7 @@ export class Settings extends HTMLElement {
             <md-outlined-text-field id="ip" required label="IP Address" value=""></md-outlined-text-field>
             <md-outlined-text-field id="port" required label="Port Number" value="" type="number" no-spinner></md-outlined-text-field>
             <md-outlined-text-field id="password" required label="Password" value="" type="password">
-            <md-icon-button toggle slot="trailing-icon" type="button">
+            <md-icon-button aria-label="toggle password" toggle slot="trailing-icon" type="button">
               <md-icon>visibility</md-icon>
               <md-icon slot="selected">visibility_off</md-icon>
             </md-icon-button>
