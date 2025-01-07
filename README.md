@@ -2,6 +2,14 @@
 
 An immersive Google Earth web application for Liquid Galaxy, this project is the first web-components-based web app ever created for the Liquid Galaxy project. It offers innovative ways to control Google Earth and send KML data for immersive data visualization.
 
+<img width="312" alt="Home" src="https://github.com/user-attachments/assets/2a7e8c53-6a22-4bea-813c-cd8c29aaf218" />
+<img width="312" alt="Voice" src="https://github.com/user-attachments/assets/fa2b2341-1bb7-4d1b-afee-1c50f369688f" />
+<img width="312" alt="Maps" src="https://github.com/user-attachments/assets/0e706c8a-c677-4896-bddf-8d5b039b2b9d" />
+<img width="312" alt="Tools" src="https://github.com/user-attachments/assets/e9be3151-93e4-4c92-ab47-4b8e63bc966b" />
+<img width="312" alt="Settings" src="https://github.com/user-attachments/assets/ff959042-4b8f-457a-908a-f49e1ed504c1" />
+<img width="312" alt="QR code" src="https://github.com/user-attachments/assets/a75814c1-6703-4540-bbb8-b35faeec4926" />
+
+
 ---
 
 ## Features and Pages
