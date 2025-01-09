@@ -1,5 +1,5 @@
 import { cleankml } from "../api/cleankml.mjs";
-import { cleanlogo } from "../api/cleanlogo.mjs";
+import { cleanlogo } from "../api/logo.mjs";
 import { reboot } from "../api/reboot.mjs";
 import { relaunch } from "../api/relaunch.mjs";
 import { shutdown } from "../api/shutdown.mjs";

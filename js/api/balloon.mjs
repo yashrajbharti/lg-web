@@ -1,11 +1,11 @@
-export const startOrbit = () => {
+export const cleanballoon = () => {
   localStorage.getItem("lgconfigs"); // get the ip, port etc configs
   // connect to lg
-  // logic to orbit
+  // logic to clean balloon
 };
 
-export const stopOrbit = () => {
+export const showballoon = () => {
   localStorage.getItem("lgconfigs"); // get the ip, port etc configs
   // connect to lg
-  // logic to orbit
+  // logic to send balloon
 };

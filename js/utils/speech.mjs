@@ -1,10 +1,10 @@
 import { cleankml } from "../api/cleankml.mjs";
-import { cleanlogo } from "../api/cleanlogo.mjs";
+import { cleanlogo } from "../api/logo.mjs";
 import { reboot } from "../api/reboot.mjs";
 import { relaunch } from "../api/relaunch.mjs";
 import { sendkml } from "../api/sendkml.mjs";
 import { shutdown } from "../api/shutdown.mjs";
-import { orbit } from "../api/orbit.mjs";
+import { startOrbit, stopOrbit } from "../api/orbit.mjs";
 
 export const speech = (words) => {
   switch (true) {
@@ -27,8 +27,12 @@ export const speech = (words) => {
       (words.includes("turn") && words.includes("off")):
       shutdown();
       break;
+    case (words.includes("stop") && words.includes("orbit")) ||
+      (words.includes("stop") && words.includes("spin")):
+      stopOrbit();
+      break;
     case words.includes("orbit") || words.includes("spin"):
-      orbit();
+      startOrbit();
       break;
     default:
       console.log("No matching command found.");
