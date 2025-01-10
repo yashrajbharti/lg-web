@@ -18,6 +18,10 @@ export const speech = (words) => {
     case words.includes("clean") && words.includes("KML"):
       cleankml();
       break;
+    case words.includes("clean") && words.includes("visualization"):
+      cleankml();
+      cleanlogo();
+      break;
     case words.includes("reboot"):
       reboot();
       break;

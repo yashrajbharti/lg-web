@@ -1,5 +1,6 @@
 import { cleankml } from "../api/cleankml.mjs";
 import { cleanlogo } from "../api/logo.mjs";
+import { cleanballoon } from "../api/balloon.mjs";
 import { reboot } from "../api/reboot.mjs";
 import { relaunch } from "../api/relaunch.mjs";
 import { shutdown } from "../api/shutdown.mjs";
@@ -89,6 +90,7 @@ export class LGtools extends HTMLElement {
         break;
       case "clean-kml":
         cleankml();
+        cleanballoon();
         break;
       case "relaunch-lg":
         this.activateDialog(
