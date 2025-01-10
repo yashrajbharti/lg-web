@@ -118,7 +118,7 @@ export class LGtools extends HTMLElement {
     const dialog = this.shadowRoot.querySelector("md-dialog");
     dialog.querySelector("form").textContent = content;
     dialog.open = true;
-    const button = dialog.querySelector("md-filled-button");
-    button.onclick = action();
+    const _button = dialog.querySelector("md-filled-button");
+    _button.addEventListener("click", action);
   }
 }
