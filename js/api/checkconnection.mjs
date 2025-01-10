@@ -1,4 +1,4 @@
-const ENDPOINT = "/api/lg-connection/connect-lg";
+const ENDPOINT = "/api/lg-connection/check-connection";
 
 export const checkConnection = async () => {
   try {
