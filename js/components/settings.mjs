@@ -1,5 +1,7 @@
 import { checkConnection } from "../api/checkconnection.mjs";
 import { connecttolg } from "../api/connect.mjs";
+import { showlogo } from "../api/logo.mjs";
+
 import QrScanner from "../utils/qrscanner.js";
 
 export class Settings extends HTMLElement {
@@ -217,6 +219,7 @@ export class Settings extends HTMLElement {
     localStorage.setItem("lgconfigs", JSON.stringify(config));
     if (await connecttolg()) {
       this.showToast("Connected to LG!");
+      showlogo();
     } else {
       this.showToast("Cannot establish a connection to LG");
     }
