@@ -111,10 +111,10 @@ export class Home extends HTMLElement {
     });
   }
 
-  checkConnectionStatus() {
+  async checkConnectionStatus() {
     const chip = this.shadowRoot.querySelector("md-assist-chip");
     const icon = chip.querySelector("md-icon");
-    if (checkConnection()) {
+    if (await checkConnection()) {
       chip.setAttribute("label", "Connected");
       icon.classList.remove("disconnect");
       icon.textContent = "check";

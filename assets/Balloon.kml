@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2"
+    xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+    <Document>
+        <name>historic.kml</name>
+        <Style id="purple_paddle">
+            <IconStyle>
+                <Icon>
+                    <href>https://raw.githubusercontent.com/yashrajbharti/kml-images/main/molten.png</href>
+                </Icon>
+            </IconStyle>
+            <BalloonStyle>
+                <text>$[description]</text>
+                <bgColor>ff1e1e1e</bgColor>
+            </BalloonStyle>
+        </Style>
+        <Placemark id="0A7ACC68BF23CB81B354">
+            <name>Historic Track Map</name>
+            <Snippet maxLines="0"></Snippet>
+            <description><![CDATA[<!-- BalloonStyle background color:
+ffffffff
+-->
+<!-- Icon URL:
+http://maps.google.com/mapfiles/kml/paddle/purple-blank.png
+-->
+<table width="400" border="0" cellspacing="0" cellpadding="5">
+ <tr>
+   <td colspan="2" align="center">
+     <img src="https://raw.githubusercontent.com/yashrajbharti/kml-images/main/volcano.png" alt="picture" width="150" height="150" />
+   </td>
+ </tr>
+ <tr>
+   <td colspan="2" align="center">
+     <h2><font color='#00CC99'>Historic Track Map</font></h2>
+     <h3><font color='#00CC99'>Various years between 1480 and 2021</font></h3>
+   </td>
+ </tr>
+ <tr>
+   <td colspan="2" align="center">
+     <img src="https://raw.githubusercontent.com/yashrajbharti/kml-images/main/historic_infographic.png" alt="picture" width="400" height="240" />    </td>
+ </tr> 
+ <tr>
+   <td colspan="2">
+     <p><font color="#3399CC">Description: This Track represents Lava Flow over the years on the La Palma island. Recorded history
+confirms these events, with the first volcanic activity in 1480 AD to the latest eruption from
+the Cumbre Vieja in 2021. Most of them have a Volcanic Explosivity Index (VEl) of 2, but the
+latest outbreak in 2021 had a VEl of 3.</font></p>
+   </td>
+ </tr>
+ <tr>
+   <td align="center">
+     <a href="#">COPERNICUS, ResearchGate, Global Volcanism Program </a>
+   </td>
+ </tr>
+ <tr>
+   <td colspan="2" align="center">
+     <font color="#999999">@La Palma Volcano Tracker 2022</font>
+   </td>
+ </tr>
+</table>]]></description>
+            <LookAt>
+                <longitude>-17.841486</longitude>
+                <latitude>28.638478</latitude>
+                <altitude>0</altitude>
+                <heading>0</heading>
+                <tilt>0</tilt>
+                <range>24000</range>
+            </LookAt>
+            <styleUrl>#purple_paddle</styleUrl>
+            <gx:balloonVisibility>1</gx:balloonVisibility>
+            <Point>
+                <coordinates>-17.841486,28.638478,0</coordinates>
+            </Point>
+        </Placemark>
+    </Document>
+</kml>

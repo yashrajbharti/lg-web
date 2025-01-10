@@ -15,11 +15,12 @@ export class Settings extends HTMLElement {
         <md-filled-tonal-button id="scan-qr"><md-icon slot="icon">qr_code_scanner</md-icon>Scan QR to Connect</md-filled-tonal-button>
         <p class="divider"><span>OR<span><p>
         <form>
+            <md-outlined-text-field id="server" required label="Server Address" value=""></md-outlined-text-field>
             <md-outlined-text-field id="username" required label="Username" value=""></md-outlined-text-field>
             <md-outlined-text-field id="ip" required label="IP Address" value=""></md-outlined-text-field>
             <md-outlined-text-field id="port" required label="Port Number" value="" type="number" no-spinner></md-outlined-text-field>
             <md-outlined-text-field id="password" required label="Password" value="" type="password">
-            <md-icon-button aria-label="toggle password" toggle slot="trailing-icon" type="button">
+            <md-icon-button id="toggle" aria-label="toggle password" toggle slot="trailing-icon" type="button">
               <md-icon>visibility</md-icon>
               <md-icon slot="selected">visibility_off</md-icon>
             </md-icon-button>
@@ -182,10 +183,10 @@ export class Settings extends HTMLElement {
     }
   }
 
-  checkConnectionStatus() {
+  async checkConnectionStatus() {
     const chip = this.shadowRoot.querySelector("md-assist-chip");
     const icon = chip.querySelector("md-icon");
-    if (checkConnection()) {
+    if (await checkConnection()) {
       chip.setAttribute("label", "Connected");
       icon.classList.remove("disconnect");
       icon.textContent = "check";
@@ -196,7 +197,8 @@ export class Settings extends HTMLElement {
     }
   }
 
-  saveConfig() {
+  async saveConfig() {
+    const server = this.shadowRoot.getElementById("server").value;
     const username = this.shadowRoot.getElementById("username").value;
     const ip = this.shadowRoot.getElementById("ip").value;
     const port = this.shadowRoot.getElementById("port").value;
@@ -204,6 +206,7 @@ export class Settings extends HTMLElement {
     const rigs = this.shadowRoot.getElementById("rigs").value;
 
     const config = {
+      server,
       username,
       ip,
       port,
@@ -212,7 +215,12 @@ export class Settings extends HTMLElement {
     };
 
     localStorage.setItem("lgconfigs", JSON.stringify(config));
-    connecttolg(config);
+    if (await connecttolg()) {
+      this.showToast("Connected to LG!");
+    } else {
+      this.showToast("Cannot establish a connection to LG");
+    }
+
     this.checkConnectionStatus();
   }
 
@@ -226,8 +234,10 @@ export class Settings extends HTMLElement {
       this.shadowRoot.getElementById("port").value = config.port || "";
       this.shadowRoot.getElementById("password").value = config.password || "";
       this.shadowRoot.getElementById("rigs").value = config.rigs || "";
+      this.shadowRoot.getElementById("server").value = config?.server || "";
     }
   }
+
   showToast(message) {
     const toast = this.shadowRoot.querySelector(".message");
     toast.textContent = message;
@@ -235,6 +245,7 @@ export class Settings extends HTMLElement {
       toast.textContent = "";
     }, 5000);
   }
+
   startQrScanner() {
     const qrVideo = this.shadowRoot.querySelector("video");
     const scannerSVG = this.shadowRoot.querySelector(
@@ -250,7 +261,7 @@ export class Settings extends HTMLElement {
     const scanner = new QrScanner(
       qrVideo,
       (result) => {
-        // { "username": "lg", "ip": "192.168.29.124", "port": "2222", "password": "lg", "rigs": "5" }
+        // {"server": "https://192.168.194.198:5500", "username": "lg", "ip": "192.168.29.124", "port": "2222", "password": "lg", "rigs": "5" }
         scanner.stop();
         qrVideo?.setAttribute("hidden", "");
         scannerSVG.style.display = "none";
@@ -260,7 +271,7 @@ export class Settings extends HTMLElement {
           if (config.username) {
             localStorage.setItem("lgconfigs", JSON.stringify(config));
             this.loadConfig();
-            connecttolg(config);
+            connecttolg();
             this.checkConnectionStatus();
           }
         } catch {

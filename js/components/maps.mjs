@@ -60,7 +60,7 @@ export class InteractiveMap extends HTMLElement {
     const onIdle = () => {
       const center = map.getCenter();
       const zoom = map.getZoom();
-      flytoview(center, zoom);
+      flytoview(center.lat, center.lng, zoom);
     };
 
     map.on("movestart", () => {

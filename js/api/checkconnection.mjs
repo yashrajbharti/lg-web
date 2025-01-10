@@ -1,5 +1,29 @@
-export const checkConnection = () => {
-  localStorage.getItem("lgconfigs"); // get the ip, port etc configs
-  return Math.random() > 0.5;
-  // add real check connection logic
+const ENDPOINT = "/lg-connection/connect-lg";
+
+export const checkConnection = async () => {
+  try {
+    const configs = JSON.parse(localStorage.getItem("lgconfigs"));
+    const { server, username, ip, port, password } = configs;
+
+    const response = await fetch(server + ENDPOINT, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, ip, port, password }),
+    });
+
+    // const result = await response.json();
+
+    if (response.ok) {
+      // console.log("Success:", result.message, result.data);
+      return true;
+    } else {
+      // console.error("Error:", result.message, result.stack);
+      return false;
+    }
+  } catch (error) {
+    // console.error("Unexpected Error:", error);
+    return false;
+  }
 };
