@@ -1,5 +1,5 @@
-const ENDPOINT_CLEAN_BALLOON = "/lg-connection/clean-balloon";
-const ENDPOINT_SHOW_BALLOON = "/lg-connection/show-balloon";
+const ENDPOINT_CLEAN_BALLOON = "/api/lg-connection/clean-balloon";
+const ENDPOINT_SHOW_BALLOON = "/api/lg-connection/show-balloon";
 let kml = "";
 
 const getBalloonKML = async () => {

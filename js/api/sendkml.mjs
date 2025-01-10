@@ -1,4 +1,4 @@
-const ENDPOINT = "/lg-connection/send-kml";
+const ENDPOINT = "/api/lg-connection/send-kml";
 const filename = "Lava";
 
 const getLavaKML = async () => {

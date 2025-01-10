@@ -1,4 +1,4 @@
-const ENDPOINT = "/lg-connection/reboot-lg";
+const ENDPOINT = "/api/lg-connection/reboot-lg";
 
 export const reboot = async () => {
   try {

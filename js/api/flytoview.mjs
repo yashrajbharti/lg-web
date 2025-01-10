@@ -1,4 +1,4 @@
-const ENDPOINT = "/lg-connection/flyto";
+const ENDPOINT = "/api/lg-connection/flyto";
 
 export const flytoview = async (
   latitude,

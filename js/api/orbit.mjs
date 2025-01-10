@@ -1,5 +1,5 @@
-const ENDPOINT_START_ORBIT = "/lg-connection/execute-orbit";
-const ENDPOINT_STOP_ORBIT = "/lg-connection/stop-orbit";
+const ENDPOINT_START_ORBIT = "/api/lg-connection/execute-orbit";
+const ENDPOINT_STOP_ORBIT = "/api/lg-connection/stop-orbit";
 
 export const startOrbit = async () => {
   try {

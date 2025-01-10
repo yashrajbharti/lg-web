@@ -1,4 +1,4 @@
-const ENDPOINT = "/lg-connection/shutdown-lg";
+const ENDPOINT = "/api/lg-connection/shutdown-lg";
 
 export const shutdown = async () => {
   try {

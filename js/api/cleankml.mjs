@@ -1,4 +1,4 @@
-const ENDPOINT = "/lg-connection/clean-visualization";
+const ENDPOINT = "/api/lg-connection/clean-visualization";
 
 export const cleankml = async () => {
   try {
