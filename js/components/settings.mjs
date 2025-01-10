@@ -139,6 +139,7 @@ export class Settings extends HTMLElement {
                 inset-block-end: 80px;
                 padding: 15px 25px;
                 border-radius: 10px;
+                z-index: 999;
                 box-shadow: var(--md-sys-color-shadow);
                 background-color: var(--md-sys-color-surface-container);
             }
