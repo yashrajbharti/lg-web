@@ -1,5 +1,6 @@
 import { checkConnection } from "../api/checkconnection.mjs";
 import { sendkml } from "../api/sendkml.mjs";
+import { showballoon } from "../api/balloon.mjs";
 
 export class Home extends HTMLElement {
   constructor() {
@@ -108,6 +109,7 @@ export class Home extends HTMLElement {
     const button = this.shadowRoot.querySelector("md-elevated-button");
     button.addEventListener("click", () => {
       sendkml();
+      showballoon();
     });
   }
 
