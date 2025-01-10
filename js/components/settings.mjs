@@ -186,10 +186,10 @@ export class Settings extends HTMLElement {
     }
   }
 
-  async checkConnectionStatus() {
+  async checkConnectionStatus(isConnected = undefined) {
     const chip = this.shadowRoot.querySelector("md-assist-chip");
     const icon = chip.querySelector("md-icon");
-    if (await checkConnection()) {
+    if (isConnected ?? (await checkConnection())) {
       chip.setAttribute("label", "Connected");
       icon.classList.remove("disconnect");
       icon.textContent = "check";
@@ -218,14 +218,14 @@ export class Settings extends HTMLElement {
     };
 
     localStorage.setItem("lgconfigs", JSON.stringify(config));
-    if (await connecttolg()) {
+    const isConnected = await connecttolg();
+    if (isConnected) {
       this.showToast("Connected to LG!");
       showlogo();
     } else {
       this.showToast("Cannot establish a connection to LG");
     }
-
-    this.checkConnectionStatus();
+    this.checkConnectionStatus(isConnected);
   }
 
   loadConfig() {
@@ -264,7 +264,7 @@ export class Settings extends HTMLElement {
 
     const scanner = new QrScanner(
       qrVideo,
-      (result) => {
+      async (result) => {
         // {"server": "https://192.168.194.198:5500", "username": "lg", "ip": "192.168.29.124", "port": "2222", "password": "lg", "rigs": "5" }
         scanner.stop();
         qrVideo?.setAttribute("hidden", "");
@@ -275,8 +275,8 @@ export class Settings extends HTMLElement {
           if (config.username) {
             localStorage.setItem("lgconfigs", JSON.stringify(config));
             this.loadConfig();
-            connecttolg();
-            this.checkConnectionStatus();
+            const isConnected = await connecttolg();
+            this.checkConnectionStatus(isConnected);
           }
         } catch {
           this.showToast("Your QR code was not valid!");
