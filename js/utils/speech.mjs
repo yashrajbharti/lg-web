@@ -15,7 +15,7 @@ export const speech = (words) => {
     case words.includes("clean") && words.includes("balloon"):
       cleanballoon();
       break;
-    case words.includes("clean") && words.includes("KML"):
+    case words.includes("clean") && words.includes("kml"):
       cleankml();
       break;
     case words.includes("clean") && words.includes("visualization"):
@@ -29,7 +29,7 @@ export const speech = (words) => {
       relaunch();
       break;
     case (words.includes("send") || words.includes("show")) &&
-      words.includes("KML"):
+      words.includes("kml"):
       sendkml();
       break;
     case (words.includes("send") || words.includes("show")) &&
