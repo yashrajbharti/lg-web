@@ -28,13 +28,16 @@ export const speech = (words) => {
     case words.includes("relaunch"):
       relaunch();
       break;
-    case words.includes("send") && words.includes("KML"):
+    case (words.includes("send") || words.includes("show")) &&
+      words.includes("KML"):
       sendkml();
       break;
-    case words.includes("send") && words.includes("balloon"):
+    case (words.includes("send") || words.includes("show")) &&
+      words.includes("balloon"):
       showballoon();
       break;
-    case words.includes("send") && words.includes("logo"):
+    case (words.includes("send") || words.includes("show")) &&
+      words.includes("logo"):
       showlogo();
       break;
     case (words.includes("shut") && words.includes("down")) ||
