@@ -152,7 +152,7 @@ export class LGVoice extends HTMLElement {
 
     recognition.onresult = (event) => {
       const transcript = event.results[0][0].transcript.trim();
-      speech(transcript);
+      speech(transcript.toLowerCase());
       isRecognizing = false;
       messageEl.textContent = transcript;
       removeAnimations();
