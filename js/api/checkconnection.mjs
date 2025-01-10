@@ -1,4 +1,4 @@
-const ENDPOINT = "/api/lg-connection/check-connection";
+const ENDPOINT = "/api/lg-connection/connect-lg";
 
 export const checkConnection = async () => {
   try {
@@ -14,7 +14,7 @@ export const checkConnection = async () => {
     });
 
     // const result = await response.json();
-
+    console.log(response);
     if (response.ok) {
       // console.log("Success:", result.message, result.data);
       return true;
