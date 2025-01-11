@@ -5,52 +5,53 @@ import { reboot } from "../api/reboot.mjs";
 import { relaunch } from "../api/relaunch.mjs";
 import { sendkml } from "../api/sendkml.mjs";
 import { shutdown } from "../api/shutdown.mjs";
-import { startOrbit, stopOrbit } from "../api/orbit.mjs";
+import { buildOrbit, startOrbit, stopOrbit } from "../api/orbit.mjs";
 
-export const speech = (words) => {
+export const speech = async (words) => {
   switch (true) {
     case words.includes("clean") && words.includes("logos"):
-      cleanlogo();
+      await cleanlogo();
       break;
     case words.includes("clean") && words.includes("balloon"):
-      cleanballoon();
+      await cleanballoon();
       break;
     case words.includes("clean") && words.includes("kml"):
-      cleankml();
+      await cleankml();
       break;
     case words.includes("clean") &&
       (words.includes("visualization") || words.includes("visualisation")):
-      cleankml();
-      cleanlogo();
+      await cleankml();
+      await cleanlogo();
       break;
     case words.includes("reboot"):
-      reboot();
+      await reboot();
       break;
     case words.includes("relaunch"):
-      relaunch();
+      await relaunch();
       break;
     case (words.includes("send") || words.includes("show")) &&
       words.includes("kml"):
-      sendkml();
+      await sendkml();
       break;
     case (words.includes("send") || words.includes("show")) &&
       words.includes("balloon"):
-      showballoon();
+      await showballoon();
       break;
     case (words.includes("send") || words.includes("show")) &&
       words.includes("logo"):
-      showlogo();
+      await showlogo();
       break;
     case (words.includes("shut") && words.includes("down")) ||
       (words.includes("turn") && words.includes("off")):
-      shutdown();
+      await shutdown();
       break;
     case (words.includes("stop") && words.includes("orbit")) ||
       (words.includes("stop") && words.includes("spin")):
-      stopOrbit();
+      await stopOrbit();
       break;
     case words.includes("orbit") || words.includes("spin"):
-      startOrbit();
+      await buildOrbit(28.644936136911202, -17.854219976579774, 12);
+      await startOrbit();
       break;
     default:
       console.log("No matching command found.");
