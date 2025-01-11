@@ -1,6 +1,7 @@
 import { checkConnection } from "../api/checkconnection.mjs";
 import { sendkml } from "../api/sendkml.mjs";
 import { showballoon } from "../api/balloon.mjs";
+import { flytoview } from "../api/flytoview.mjs";
 
 export class Home extends HTMLElement {
   constructor() {
@@ -107,9 +108,10 @@ export class Home extends HTMLElement {
 
   connectedCallback() {
     const button = this.shadowRoot.querySelector("md-elevated-button");
-    button.addEventListener("click", () => {
-      sendkml();
-      showballoon();
+    button.addEventListener("click", async () => {
+      await flytoview(28.644936136911202, -17.854219976579774, 12);
+      await sendkml();
+      await showballoon();
     });
   }
 
