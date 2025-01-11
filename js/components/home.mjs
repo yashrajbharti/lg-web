@@ -90,6 +90,7 @@ export class Home extends HTMLElement {
     if (animateAttribute === "true") {
       this.shadowRoot.querySelector("svg").classList.add("animate");
     }
+    this.checkConnectionStatus();
   }
   static get observedAttributes() {
     return ["active"];
