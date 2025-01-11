@@ -221,7 +221,9 @@ export class Settings extends HTMLElement {
     const isConnected = await connecttolg();
     if (isConnected) {
       this.showToast("Connected to LG!");
-      showlogo();
+      setTimeout(() => {
+        showlogo();
+      }, 3000);
     } else {
       this.showToast("Cannot establish a connection to LG");
     }
