@@ -10,7 +10,7 @@ export const startOrbit = async (
 ) => {
   try {
     const configs = JSON.parse(localStorage.getItem("lgconfigs"));
-    const { server, username, ip, port, password } = configs;
+    const { server, username, ip, port, password, rigs } = configs;
 
     const elevation = 591657550.5 / Math.pow(2, zoom) / rigs;
 
