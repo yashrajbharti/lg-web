@@ -2,7 +2,7 @@ const ENDPOINT = "/api/lg-connection/send-kml";
 const filename = "Lava";
 
 const getLavaKML = async () => {
-  const res = await fetch("../../assets/Lava.kml");
+  const res = await fetch("../.././assets/Lava.kml");
   return await res.text();
 };
 
