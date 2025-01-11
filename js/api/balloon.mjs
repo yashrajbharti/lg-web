@@ -3,7 +3,9 @@ const ENDPOINT_SHOW_BALLOON = "/api/lg-connection/show-balloon";
 let kml = "";
 
 const getBalloonKML = async () => {
-  const res = await fetch("../.././assets/Balloon.kml");
+  const res = await fetch(
+    "https://yashrajbharti.github.io/lg-web/assets/Balloon.kml"
+  );
   return await res.text();
 };
 
