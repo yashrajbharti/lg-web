@@ -26,7 +26,7 @@ export const speech = async (words) => {
     case words.includes("reboot"):
       await reboot();
       break;
-    case words.includes("relaunch"):
+    case words.includes("relaunch") || words.includes("launch"):
       await relaunch();
       break;
     case (words.includes("send") || words.includes("show")) &&
