@@ -1,4 +1,5 @@
 import { flytoview } from "../api/flytoview.mjs";
+import { getFeatures } from "../utils/get-features.mjs";
 
 export class InteractiveMap extends HTMLElement {
   constructor() {
@@ -42,17 +43,40 @@ export class InteractiveMap extends HTMLElement {
     this.shadowRoot.appendChild(leafletJS);
   }
 
-  initializeLeafletMap() {
+  async initializeLeafletMap() {
     const mapContainer = this.shadowRoot.getElementById("map");
 
     const map = L.map(mapContainer, {
       zoomControl: false,
       dragging: true,
       scrollWheelZoom: true,
-    }).setView([28.644936136911202, -17.854219976579774], 11);
+    }).setView([34.07022, -118.54453], 11);
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution: "",
+    }).addTo(map);
+
+    const features = await getFeatures();
+
+    const customIcon = L.icon({
+      iconUrl: "https://yashrajbharti.github.io/lg-web/assets/Fire.png",
+      iconSize: [32, 32],
+      iconAnchor: [16, 32],
+      popupAnchor: [0, -32],
+    });
+
+    L.geoJSON(features, {
+      style: {
+        color: "#ff0000",
+        weight: 5,
+        opacity: 0.65,
+        radius: 8,
+        fillColor: "#ffa500",
+        fillOpacity: 0.5,
+      },
+      pointToLayer: function (_, latlng) {
+        return L.marker(latlng, { icon: customIcon });
+      },
     }).addTo(map);
 
     let idleTimeout;
