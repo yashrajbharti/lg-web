@@ -1,8 +1,8 @@
 const ENDPOINT = "/api/lg-connection/send-kml";
-const filename = "fire";
+const filename = "Fire";
 
 const getKML = async () => {
-  const res = await fetch("https://lg-web-la-fire.netlify.app/assets/fire.kml");
+  const res = await fetch("https://lg-web-la-fire.netlify.app/assets/Fire.kml");
   return await res.text();
 };
 
@@ -21,7 +21,7 @@ export const sendkml = async () => {
     const kml = await getKML();
 
     const kmlContent = kml;
-    const kmlFileAsTxt = new File([kmlContent], "fire.txt", {
+    const kmlFileAsTxt = new File([kmlContent], "Fire.txt", {
       type: "text/plain",
     });
     formData.append("file", kmlFileAsTxt);

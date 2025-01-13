@@ -43,7 +43,7 @@ export class InteractiveMap extends HTMLElement {
     this.shadowRoot.appendChild(leafletJS);
   }
 
-  initializeLeafletMap() {
+  async initializeLeafletMap() {
     const mapContainer = this.shadowRoot.getElementById("map");
 
     const map = L.map(mapContainer, {
@@ -56,7 +56,7 @@ export class InteractiveMap extends HTMLElement {
       attribution: "",
     }).addTo(map);
 
-    const features = getFeatures();
+    const features = await getFeatures();
 
     L.geoJSON(features).addTo(map);
 
