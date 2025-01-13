@@ -1,4 +1,5 @@
 import { flytoview } from "../api/flytoview.mjs";
+import { getFeatures } from "../utils/get-features.mjs";
 
 export class InteractiveMap extends HTMLElement {
   constructor() {
@@ -54,6 +55,10 @@ export class InteractiveMap extends HTMLElement {
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution: "",
     }).addTo(map);
+
+    const features = getFeatures();
+
+    L.geoJSON(features).addTo(map);
 
     let idleTimeout;
 
