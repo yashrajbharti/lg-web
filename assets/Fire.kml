@@ -53,17 +53,22 @@
 
 		<Style id="PolyStyle00">
 			<LabelStyle>
-				<color>00000000</color>
-				<scale>0</scale>
+				<color>ffffffff</color>
+				<scale>1.0</scale>
 			</LabelStyle>
+
 			<LineStyle>
-				<color>400000ff</color>
-				<width>0.75</width>
+				<color>800000ff</color>
+				<width>1.5</width>
 			</LineStyle>
+
 			<PolyStyle>
-				<color>ffbebeff</color>
+				<color>8000a5ff</color>
+				<fill>1</fill>
+				<outline>1</outline>
 			</PolyStyle>
 		</Style>
+
 		<Folder id="FeatureLayer0">
 			<name>Perimeters</name>
 			<open>1</open>

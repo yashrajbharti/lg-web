@@ -58,7 +58,26 @@ export class InteractiveMap extends HTMLElement {
 
     const features = await getFeatures();
 
-    L.geoJSON(features).addTo(map);
+    const customIcon = L.icon({
+      iconUrl: "https://lg-web-la-fire.netlify.app/assets/Fire.png",
+      iconSize: [32, 32],
+      iconAnchor: [16, 32],
+      popupAnchor: [0, -32],
+    });
+
+    L.geoJSON(features, {
+      style: {
+        color: "#ff0000",
+        weight: 5,
+        opacity: 0.65,
+        radius: 8,
+        fillColor: "#ffa500",
+        fillOpacity: 0.5,
+      },
+      pointToLayer: function (_, latlng) {
+        return L.marker(latlng, { icon: customIcon });
+      },
+    }).addTo(map);
 
     let idleTimeout;
 
