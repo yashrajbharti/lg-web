@@ -50,7 +50,7 @@ export const speech = async (words) => {
       await stopOrbit();
       break;
     case words.includes("orbit") || words.includes("spin"):
-      await startOrbit(34.07022, -118.54453, 12);
+      await startOrbit(34.07022, -118.54453, 10);
       break;
     default:
       console.log("No matching command found.");
