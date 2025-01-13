@@ -2,7 +2,9 @@ const ENDPOINT = "/api/lg-connection/send-kml";
 const filename = "Fire";
 
 const getKML = async () => {
-  const res = await fetch("https://lg-web-la-fire.netlify.app/assets/Fire.kml");
+  const res = await fetch(
+    "https://yashrajbharti.github.io/lg-web/assets/Fire.kml"
+  );
   return await res.text();
 };
 

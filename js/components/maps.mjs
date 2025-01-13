@@ -59,7 +59,7 @@ export class InteractiveMap extends HTMLElement {
     const features = await getFeatures();
 
     const customIcon = L.icon({
-      iconUrl: "https://lg-web-la-fire.netlify.app/assets/Fire.png",
+      iconUrl: "https://yashrajbharti.github.io/lg-web/assets/Fire.png",
       iconSize: [32, 32],
       iconAnchor: [16, 32],
       popupAnchor: [0, -32],
