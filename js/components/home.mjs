@@ -110,7 +110,7 @@ export class Home extends HTMLElement {
   connectedCallback() {
     const button = this.shadowRoot.querySelector("md-elevated-button");
     button.addEventListener("click", async () => {
-      await flytoview(28.644936136911202, -17.854219976579774, 12);
+      await flytoview(34.07022, -118.54453, 12);
       await sendkml();
       await showballoon();
     });
