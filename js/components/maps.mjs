@@ -49,7 +49,7 @@ export class InteractiveMap extends HTMLElement {
       zoomControl: false,
       dragging: true,
       scrollWheelZoom: true,
-    }).setView([28.644936136911202, -17.854219976579774], 11);
+    }).setView([34.07022, -118.54453], 11);
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution: "",
