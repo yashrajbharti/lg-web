@@ -1,6 +1,7 @@
 export const getFeatures = async () => {
   const data = await fetch(
-    "https://lg-web-la-fire.netlify.app/assets/Fire.geo"
+    "https://lg-web-la-fire.netlify.app/assets/Fire.geojson"
   );
-  return;
+  const result = await data.json();
+  return result;
 };

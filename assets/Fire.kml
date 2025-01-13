@@ -4,10 +4,16 @@
 	<Document>
 		<name>LA Wildfire Incidents</name>
 
-		<!-- Palisades Fire Marker -->
 		<Placemark>
 			<name>Palisades Fire</name>
 			<description>Location: Pacific Palisades</description>
+			<Style>
+				<IconStyle>
+					<Icon>
+						<href>https://lg-web-la-fire.netlify.app/assets/Fire.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
 			<Point>
 				<coordinates>-118.542500,34.072500,0</coordinates>
 			</Point>
@@ -17,6 +23,13 @@
 		<Placemark>
 			<name>Hurst Fire</name>
 			<description>Location: Sylmar, Los Angeles</description>
+			<Style>
+				<IconStyle>
+					<Icon>
+						<href>https://lg-web-la-fire.netlify.app/assets/Fire.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
 			<Point>
 				<coordinates>-118.478000,34.325000,0</coordinates>
 			</Point>
@@ -26,10 +39,18 @@
 		<Placemark>
 			<name>Eaton Fire</name>
 			<description>Location: Altadena/Pasadena</description>
+			<Style>
+				<IconStyle>
+					<Icon>
+						<href>https://lg-web-la-fire.netlify.app/assets/Fire.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
 			<Point>
 				<coordinates>-118.088000,34.205000,0</coordinates>
 			</Point>
 		</Placemark>
+
 		<Style id="PolyStyle00">
 			<LabelStyle>
 				<color>00000000</color>
