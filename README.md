@@ -74,7 +74,7 @@ An immersive Google Earth web application for Liquid Galaxy, this project is the
       ```
 
   - **Manual Input:**
-    - Enter connection details (username, IP, port, password, rigs).
+    - Enter connection details (server, username, IP, port, password, rigs).
 
 ---
 
