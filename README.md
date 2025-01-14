@@ -64,6 +64,7 @@ An immersive Google Earth web application for Liquid Galaxy, this project is the
 
       ```json
       {
+        "server": "192.168.29.126",
         "username": "lg",
         "ip": "192.168.29.124",
         "port": "2222",
