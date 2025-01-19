@@ -3,14 +3,14 @@ const ENDPOINT = "/api/lg-connection/relaunch-lg";
 export const relaunch = async () => {
   try {
     const configs = JSON.parse(localStorage.getItem("lgconfigs"));
-    const { server, username, ip, port, password, rigs } = configs;
+    const { server, username, ip, port, password, screens } = configs;
 
     const response = await fetch(server + ENDPOINT, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username, ip, port, password, rigs }),
+      body: JSON.stringify({ username, ip, port, password, screens }),
     });
 
     const result = await response.json();

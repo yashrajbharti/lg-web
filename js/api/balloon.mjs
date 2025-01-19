@@ -12,14 +12,14 @@ const getBalloonKML = async () => {
 export const cleanballoon = async () => {
   try {
     const configs = JSON.parse(localStorage.getItem("lgconfigs"));
-    const { server, username, ip, port, password, rigs } = configs;
+    const { server, username, ip, port, password, screens } = configs;
 
     const response = await fetch(server + ENDPOINT_CLEAN_BALLOON, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username, ip, port, password, rigs }),
+      body: JSON.stringify({ username, ip, port, password, screens }),
     });
 
     const result = await response.json();
@@ -37,14 +37,14 @@ export const cleanballoon = async () => {
 export const showballoon = async () => {
   try {
     const configs = JSON.parse(localStorage.getItem("lgconfigs"));
-    const { server, username, ip, port, password, rigs } = configs;
+    const { server, username, ip, port, password, screens } = configs;
     kml = await getBalloonKML();
     const response = await fetch(server + ENDPOINT_SHOW_BALLOON, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username, ip, port, password, rigs, kml }),
+      body: JSON.stringify({ username, ip, port, password, screens, kml }),
     });
 
     const result = await response.json();

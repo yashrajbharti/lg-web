@@ -5,14 +5,14 @@ const kml = `<?xml version="1.0" encoding="UTF-8"?><kml xmlns="http://www.opengi
 export const cleanlogo = async () => {
   try {
     const configs = JSON.parse(localStorage.getItem("lgconfigs"));
-    const { server, username, ip, port, password, rigs } = configs;
+    const { server, username, ip, port, password, screens } = configs;
 
     const response = await fetch(server + ENDPOINT_CLEAN_LOGO, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username, ip, port, password, rigs }),
+      body: JSON.stringify({ username, ip, port, password, screens }),
     });
 
     const result = await response.json();
@@ -30,14 +30,14 @@ export const cleanlogo = async () => {
 export const showlogo = async () => {
   try {
     const configs = JSON.parse(localStorage.getItem("lgconfigs"));
-    const { server, username, ip, port, password, rigs } = configs;
+    const { server, username, ip, port, password, screens } = configs;
 
     const response = await fetch(server + ENDPOINT_SHOW_LOGO, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username, ip, port, password, rigs, kml }),
+      body: JSON.stringify({ username, ip, port, password, screens, kml }),
     });
 
     const result = await response.json();

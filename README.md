@@ -69,12 +69,12 @@ An immersive Google Earth web application for Liquid Galaxy, this project is the
         "ip": "192.168.29.124",
         "port": "2222",
         "password": "lg",
-        "rigs": "5"
+        "screens": "5"
       }
       ```
 
   - **Manual Input:**
-    - Enter connection details (server, username, IP, port, password, rigs).
+    - Enter connection details (server, username, IP, port, password, screens).
 
 ---
 

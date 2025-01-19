@@ -27,7 +27,7 @@ export class Settings extends HTMLElement {
               <md-icon slot="selected">visibility_off</md-icon>
             </md-icon-button>
             </md-outlined-text-field>
-            <md-outlined-text-field id="rigs" label="Number of Rigs" value="" type="number" no-spinner></md-outlined-text-field>
+            <md-outlined-text-field id="screens" label="Number of Screens" value="" type="number" no-spinner></md-outlined-text-field>
             <md-filled-button type="submit">Connect to LG</md-filled-button>
         </form>
         <video hidden></video>
@@ -206,7 +206,7 @@ export class Settings extends HTMLElement {
     const ip = this.shadowRoot.getElementById("ip").value;
     const port = this.shadowRoot.getElementById("port").value;
     const password = this.shadowRoot.getElementById("password").value;
-    const rigs = this.shadowRoot.getElementById("rigs").value;
+    const screens = this.shadowRoot.getElementById("screens").value;
 
     const config = {
       server,
@@ -214,7 +214,7 @@ export class Settings extends HTMLElement {
       ip,
       port,
       password,
-      rigs,
+      screens,
     };
 
     localStorage.setItem("lgconfigs", JSON.stringify(config));
@@ -239,7 +239,7 @@ export class Settings extends HTMLElement {
       this.shadowRoot.getElementById("ip").value = config.ip || "";
       this.shadowRoot.getElementById("port").value = config.port || "";
       this.shadowRoot.getElementById("password").value = config.password || "";
-      this.shadowRoot.getElementById("rigs").value = config.rigs || "";
+      this.shadowRoot.getElementById("screens").value = config.screens || "";
       this.shadowRoot.getElementById("server").value = config?.server || "";
     }
   }
@@ -267,7 +267,7 @@ export class Settings extends HTMLElement {
     const scanner = new QrScanner(
       qrVideo,
       async (result) => {
-        // {"server": "https://192.168.194.198:5500", "username": "lg", "ip": "192.168.29.124", "port": "2222", "password": "lg", "rigs": "5" }
+        // {"server": "https://192.168.194.198:5500", "username": "lg", "ip": "192.168.29.124", "port": "2222", "password": "lg", "screens": "5" }
         scanner.stop();
         qrVideo?.setAttribute("hidden", "");
         scannerSVG.style.display = "none";
