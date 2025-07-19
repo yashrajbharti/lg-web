@@ -282,7 +282,7 @@ export class Settings extends HTMLElement {
           }
           if (config.server) {
             const existingSettings = JSON.parse(
-              localStorage.getItem("lgconfigs") ?? {}
+              localStorage.getItem("lgconfigs") || "{}"
             );
             localStorage.setItem(
               "lgconfigs",
