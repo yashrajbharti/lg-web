@@ -274,7 +274,6 @@ export class Settings extends HTMLElement {
         backArrowContainer.style.display = "none";
         try {
           const config = JSON.parse(result.data.trim());
-          alert(JSON.stringify(config));
           if (config.username) {
             localStorage.setItem("lgconfigs", JSON.stringify(config));
             this.loadConfig();
