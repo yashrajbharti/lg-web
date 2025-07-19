@@ -274,6 +274,7 @@ export class Settings extends HTMLElement {
         backArrowContainer.style.display = "none";
         try {
           const config = JSON.parse(result.data.trim());
+          alert(JSON.stringify(config));
           if (config.username) {
             localStorage.setItem("lgconfigs", JSON.stringify(config));
             this.loadConfig();
@@ -281,10 +282,12 @@ export class Settings extends HTMLElement {
             this.checkConnectionStatus(isConnected);
           }
           if (config.server) {
-            const existingSettings = localStorage.getItem("lgconfigs");
+            const existingSettings = JSON.parse(
+              localStorage.getItem("lgconfigs") ?? {}
+            );
             localStorage.setItem(
               "lgconfigs",
-              JSON.stringify([...existingSettings, ...config])
+              JSON.stringify({ ...existingSettings, ...config })
             );
           }
         } catch {
