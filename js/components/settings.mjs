@@ -274,16 +274,20 @@ export class Settings extends HTMLElement {
         backArrowContainer.style.display = "none";
         try {
           const config = JSON.parse(result.data.trim());
+          const existingSettings = JSON.parse(
+            localStorage.getItem("lgconfigs") || "{}"
+          );
+
           if (config.username) {
-            localStorage.setItem("lgconfigs", JSON.stringify(config));
+            localStorage.setItem(
+              "lgconfigs",
+              JSON.stringify({ ...existingSettings, ...config })
+            );
             this.loadConfig();
             const isConnected = await connecttolg();
             this.checkConnectionStatus(isConnected);
           }
           if (config.server) {
-            const existingSettings = JSON.parse(
-              localStorage.getItem("lgconfigs") || "{}"
-            );
             localStorage.setItem(
               "lgconfigs",
               JSON.stringify({ ...existingSettings, ...config })
