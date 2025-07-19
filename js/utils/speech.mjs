@@ -5,7 +5,12 @@ import { reboot } from "../api/reboot.mjs";
 import { relaunch } from "../api/relaunch.mjs";
 import { sendkml } from "../api/sendkml.mjs";
 import { shutdown } from "../api/shutdown.mjs";
-import { startOrbit, stopOrbit } from "../api/orbit.mjs";
+import {
+  buildOrbit,
+  cleanOrbit,
+  startOrbit,
+  stopOrbit,
+} from "../api/orbit.mjs";
 
 export const speech = async (words) => {
   switch (true) {
@@ -49,8 +54,14 @@ export const speech = async (words) => {
       (words.includes("stop") && words.includes("spin")):
       await stopOrbit();
       break;
+    case words.includes("build") && words.includes("orbit"):
+      await buildOrbit(34.07022, -118.54453, 10);
+      break;
     case words.includes("orbit") || words.includes("spin"):
-      await startOrbit(34.07022, -118.54453, 10);
+      await startOrbit();
+      break;
+    case words.includes("clean") && words.includes("orbit"):
+      await cleanOrbit();
       break;
     default:
       console.log("No matching command found.");
