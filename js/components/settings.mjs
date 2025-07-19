@@ -274,25 +274,20 @@ export class Settings extends HTMLElement {
         backArrowContainer.style.display = "none";
         try {
           const config = JSON.parse(result.data.trim());
+
           const existingSettings = JSON.parse(
             localStorage.getItem("lgconfigs") || "{}"
           );
 
-          if (config.username) {
-            localStorage.setItem(
-              "lgconfigs",
-              JSON.stringify({ ...existingSettings, ...config })
-            );
-            this.loadConfig();
+          const updatedSettings = { ...existingSettings, ...config };
+
+          localStorage.setItem("lgconfigs", JSON.stringify(updatedSettings));
+
+          this.loadConfig();
+
+          if (updatedSettings.username) {
             const isConnected = await connecttolg();
             this.checkConnectionStatus(isConnected);
-          }
-          if (config.server) {
-            localStorage.setItem(
-              "lgconfigs",
-              JSON.stringify({ ...existingSettings, ...config })
-            );
-            this.loadConfig();
           }
         } catch {
           this.showToast("Your QR code was not valid!");
