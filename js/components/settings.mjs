@@ -280,6 +280,13 @@ export class Settings extends HTMLElement {
             const isConnected = await connecttolg();
             this.checkConnectionStatus(isConnected);
           }
+          if (config.server) {
+            const existingSettings = localStorage.getItem("lgconfigs");
+            localStorage.setItem(
+              "lgconfigs",
+              JSON.stringify([...existingSettings, ...config])
+            );
+          }
         } catch {
           this.showToast("Your QR code was not valid!");
         }
