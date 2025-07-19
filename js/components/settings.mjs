@@ -284,11 +284,11 @@ export class Settings extends HTMLElement {
             const existingSettings = JSON.parse(
               localStorage.getItem("lgconfigs") || "{}"
             );
-            alert(JSON.stringify({ ...existingSettings, ...config }));
             localStorage.setItem(
               "lgconfigs",
               JSON.stringify({ ...existingSettings, ...config })
             );
+            this.loadConfig();
           }
         } catch {
           this.showToast("Your QR code was not valid!");
