@@ -38,7 +38,17 @@
                 console.error("Service Worker registration failed:", error);
             });
         }
+
+        // Load Google Maps API with key from localStorage
+        const apiKey = localStorage.getItem("googleMapsApiKey");
+        if (apiKey) {
+            const script = document.createElement("script");
+            script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=maps,marker`;
+            script.defer = true;
+            document.head.appendChild(script);
+        }
     </script>
+
 </head>
 
 <body>

@@ -28,6 +28,12 @@ export class Settings extends HTMLElement {
             </md-icon-button>
             </md-outlined-text-field>
             <md-outlined-text-field id="screens" label="Number of Screens" value="" type="number" no-spinner></md-outlined-text-field>
+            <md-outlined-text-field id="maps-api-key" label="Google Maps API Key" value="" type="password">
+            <md-icon-button id="toggle-key" aria-label="toggle api key" toggle slot="trailing-icon" type="button">
+              <md-icon>visibility</md-icon>
+              <md-icon slot="selected">visibility_off</md-icon>
+            </md-icon-button>
+            </md-outlined-text-field>
             <md-filled-button type="submit">Connect to LG</md-filled-button>
         </form>
         <video hidden></video>
@@ -158,13 +164,20 @@ export class Settings extends HTMLElement {
       this.saveConfig();
     });
 
+    this.shadowRoot.querySelector("#toggle").addEventListener("click", () => {
+      const passwordField = this.shadowRoot.getElementById("password");
+      if (passwordField.getAttribute("type") === "text")
+        passwordField.setAttribute("type", "password");
+      else passwordField.setAttribute("type", "text");
+    });
+
     this.shadowRoot
-      .querySelector("md-icon-button")
+      .querySelector("#toggle-key")
       .addEventListener("click", () => {
-        const passwordField = this.shadowRoot.getElementById("password");
-        if (passwordField.getAttribute("type") === "text")
-          passwordField.setAttribute("type", "password");
-        else passwordField.setAttribute("type", "text");
+        const apiKeyField = this.shadowRoot.getElementById("maps-api-key");
+        if (apiKeyField.getAttribute("type") === "text")
+          apiKeyField.setAttribute("type", "password");
+        else apiKeyField.setAttribute("type", "text");
       });
 
     this.shadowRoot
@@ -207,6 +220,7 @@ export class Settings extends HTMLElement {
     const port = this.shadowRoot.getElementById("port").value;
     const password = this.shadowRoot.getElementById("password").value;
     const screens = this.shadowRoot.getElementById("screens").value;
+    const mapsApiKey = this.shadowRoot.getElementById("maps-api-key").value;
 
     const config = {
       server,
@@ -218,6 +232,11 @@ export class Settings extends HTMLElement {
     };
 
     localStorage.setItem("lgconfigs", JSON.stringify(config));
+
+    if (mapsApiKey) {
+      localStorage.setItem("googleMapsApiKey", mapsApiKey);
+    }
+
     const isConnected = await connecttolg();
     if (isConnected) {
       this.showToast("Connected to LG!");
@@ -231,16 +250,33 @@ export class Settings extends HTMLElement {
   }
 
   loadConfig() {
-    const savedConfig = localStorage.getItem("lgconfigs");
-    if (savedConfig) {
-      const config = JSON.parse(savedConfig);
+    const defaultConfig = {
+      server: "https://192.168.29.126",
+      username: "lg",
+      ip: "192.168.29.124",
+      port: "2222",
+      password: "lg",
+      screens: "5",
+    };
 
-      this.shadowRoot.getElementById("username").value = config.username || "";
-      this.shadowRoot.getElementById("ip").value = config.ip || "";
-      this.shadowRoot.getElementById("port").value = config.port || "";
-      this.shadowRoot.getElementById("password").value = config.password || "";
-      this.shadowRoot.getElementById("screens").value = config.screens || "";
-      this.shadowRoot.getElementById("server").value = config?.server || "";
+    const savedConfig = localStorage.getItem("lgconfigs");
+    const config = savedConfig ? JSON.parse(savedConfig) : defaultConfig;
+
+    this.shadowRoot.getElementById("server").value =
+      config.server || defaultConfig.server;
+    this.shadowRoot.getElementById("username").value =
+      config.username || defaultConfig.username;
+    this.shadowRoot.getElementById("ip").value = config.ip || defaultConfig.ip;
+    this.shadowRoot.getElementById("port").value =
+      config.port || defaultConfig.port;
+    this.shadowRoot.getElementById("password").value =
+      config.password || defaultConfig.password;
+    this.shadowRoot.getElementById("screens").value =
+      config.screens || defaultConfig.screens;
+
+    const savedApiKey = localStorage.getItem("googleMapsApiKey");
+    if (savedApiKey) {
+      this.shadowRoot.getElementById("maps-api-key").value = savedApiKey;
     }
   }
 

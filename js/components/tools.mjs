@@ -50,6 +50,7 @@ export class LGtools extends HTMLElement {
           md-filled-tonal-button {
               padding: 40px;
               font-size: 20px;
+              line-height: 1.2;
           }
           md-filled-tonal-button:nth-of-type(1) {
               filter: hue-rotate(80deg) contrast(1.2);
